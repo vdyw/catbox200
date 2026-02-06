@@ -1,4 +1,4 @@
-name: Precise Video Compression 195MB - Episode 12
+name: Guaranteed Compression 195MB - Episode 12
 
 on:
   workflow_dispatch:
@@ -12,23 +12,21 @@ jobs:
 
       - name: Download Video
         run: |
-          # الرابط الجديد للحلقة 12
-          curl -L 'https://abra--5e4bd524.api.cosmic-crab.buzz/f156c9e34b9b191a93ec53d5e1587ce27f3151ee/%D8%A3%D8%A8%D8%B7%D8%A7%D9%84%20%D8%A7%D9%84%D8%AF%D9%8A%D8%AC%D9%8A%D8%AA%D8%A7%D9%84%20%D8%B3%D8%A8%D9%8A%D8%B3%D8%AA%D9%88%D9%86%20265/12.mp4?api-key=8acbcf1e-732c-4574-a3bf-27e6a85b86f1&download=true&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3NzA0NjEzNjUsInJhdGUiOiI1TSIsInJvbGUiOiJmcmVlIiwic2Vzc2lvbklEIjoiTVRjM01ETTNNemd4TjN4T2QzZEJUa1pLVTFaR1pGUlRWbWhGVGpCNFZsVnJZM2xTUlhSTFZWWm9VbE5zWkZwWFJFMTVVekZSZWxWRlpGaFVSbHBYVkd4d1JsUkZiRkJTYTJoR1ZGWmFWbFpWYUVkV01FVTlmT1I0QXRnWXJGOUV3NU93bHl4Uy13Nk8xY0lPZjlfR2VnbjI3SFI5by1YRyIsImRvbWFpbiI6IndlYnRvci5pbyIsImFnZW50IjoiTW96aWxsYS81LjAgKE1hY2ludG9zaDsgSW50ZWwgTWFjIE9TIFggMTBfMTVfNykgQXBwbGVXZWJLaXQvNjA1LjEuMTUgKEtIVE1MLCBsaWtlIEdlY2tvKSBWZXJzaW9uLzI2LjIgU2FmYXJpLzYwNS4xLjE1IiwicmVtb3RlQWRkcmVzcyI6IjIwMDE6MTZhMjpjMTNhOmQ4Nzc6YzdjOjg3ZWI6NjQ5OTo3OWUifQ.vpb8nVni8KgQOEMRLY-dzhNyfdzvZ_hGs4NvO1jdmso' -o input_video.mp4
+          # الرابط الجديد المحدث
+          curl -L 'https://abra--5e4bd524.api.cosmic-crab.buzz/f156c9e34b9b191a93ec53d5e1587ce27f3151ee/%D8%A3%D8%A8%D8%B7%D8%A7%D9%84%20%D8%A7%D9%84%D8%AF%D9%8A%D8%AC%D9%8A%D8%AA%D8%A7%D9%84%20%D8%B3%D8%A8%D9%8A%D8%B3%D8%AA%D9%88%D9%86%20265/12.mp4?api-key=8acbcf1e-732c-4574-a3bf-27e6a85b86f1&download=true&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3NzA0NjEzNjUsInJhdGUiOiI1TSIsInJvbGUiOiJmcmVlIiwic2Vzc2lvbklEIjoiTVRjM01ETTNNemd4TjN4T2QzZEJUa1ZvVVZGNlZrVlRiR3hFVjFWc1ZFNVdXazFUTVZaVVVsUldUbFpzVGxKUk1WcFJUbXBTUWxKR1VrZFNhMGt6VjJ0dmVsSXhXazFTTURWS1UwWmtTRTR3TVZaVWJFVTlmSkw1eU5sWGNOZHhSLXNiVlNxS2JXSnVaNktxZmFMdnY3MVowV185YWFQZiIsImRvbWFpbiI6IndlYnRvci5pbyIsImFnZW50IjoiTW96aWxsYS81LjAgKE1hY2ludG9zaDsgSW50ZWwgTWFjIE9TIFggMTBfMTVfNykgQXBwbGVXZWJLaXQvNjA1LjEuMTUgKEtIVE1MLCBsaWtlIEdlY2tvKSBWZXJzaW9uLzI2LjIgU2FmYXJpLzYwNS4xLjE1IiwicmVtb3RlQWRkcmVzcyI6IjIwMDE6MTZhMjpjMTNhOmQ4Nzc6YzdjOjg3ZWI6NjQ5OTo3OWUifQ.vpb8nVni8KgQOEMRLY-dzhNyfdzvZ_hGs4NvO1jdmso' -o input_video.mp4
 
-      - name: Balanced Compression (Target 195MB Safe)
+      - name: Extreme Safety Compression
         run: |
-          # استخدام 930k كـ Bitrate لضمان الاستقرار تحت سقف الـ 200MB
-          # Pass 1
-          ffmpeg -y -i input_video.mp4 -c:v libx264 -b:v 930k -preset medium -pass 1 -an -f mp4 /dev/null
-          # Pass 2 (نسخ الصوت الأصلي للحفاظ على الجودة)
-          ffmpeg -y -i input_video.mp4 -c:v libx264 -b:v 930k -preset medium -pass 2 -c:a copy output_video.mp4
+          # نستخدم Bitrate قيمته 900k لضمان الجودة
+          # نستخدم -fs 194M كقفل أمان مستحيل تجاوزه لضمان قبول Catbox
+          ffmpeg -y -i input_video.mp4 -c:v libx264 -b:v 900k -preset medium -c:a aac -b:a 128k -fs 194M output_video.mp4
 
-      - name: Check Final Size
+      - name: Check Size
         run: du -sh output_video.mp4
 
       - name: Upload to Catbox
         run: |
           RESPONSE=$(curl -F "reqtype=fileupload" -F "fileToUpload=@output_video.mp4" https://catbox.moe/user/api.php)
           echo "-------------------------------------"
-          echo "تم الإنجاز! الرابط: $RESPONSE"
+          echo "Done! Direct Link: $RESPONSE"
           echo "-------------------------------------"
